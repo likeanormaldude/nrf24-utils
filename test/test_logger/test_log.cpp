@@ -37,6 +37,11 @@ void test_logger_functions(void)
     TEST_ASSERT_TRUE(true);
 }
 
+void test_colored_format(void)
+{
+    logger.info("Colored %t %t", magenta("hello"), blue("world"));
+    TEST_ASSERT_TRUE(true);
+}
 
 int runUnityTests(void)
 {
@@ -44,6 +49,7 @@ int runUnityTests(void)
 
     RUN_TEST(test_timestamp_format);
     RUN_TEST(test_logger_functions);
+    RUN_TEST(test_colored_format);
 
     return UNITY_END();
 }
