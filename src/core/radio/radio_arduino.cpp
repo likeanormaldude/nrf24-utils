@@ -1,12 +1,19 @@
 #include <Arduino.h>
+#include <RF24.h>
+
 #include "radio.h"
-#include "../log/log.h"
+#include "log.h"
 
-const uint8_t Radio::pipes[2][6] = {"1Node", "2Node"};
+static const uint8_t pipes[2][6] = {"1Node", "2Node"};
 
-Radio::Radio(uint8_t cePin, uint8_t csnPin, bool radioNumber) // Constructor
-    : radio(cePin, csnPin), radioNumber(radioNumber) // assignment of private members
+static RF24 radio(4, 5);   // CE / CSN example
+
+static bool radioNumber;
+
+Radio::Radio(uint8_t cePin, uint8_t csnPin, bool number)
 {
+    radio = RF24(cePin, csnPin);
+    radioNumber = number;
 }
 
 void Radio::init()
@@ -31,40 +38,40 @@ void Radio::init()
 
 void Radio::startReceiver()
 {
-    log("ESP32 > NRF24L01 Receive text");
+    logger.info("ESP32 > NRF24L01 Receive text");
     init();
 }
 
 bool Radio::isCommunicationOk(bool keepTrying)
 {
-    bool isConnected = false;
+    bool connected = false;
 
-    while (!isConnected)
+    while (!connected)
     {
-        isConnected = radio.isChipConnected();
+        connected = radio.isChipConnected();
 
         if (!keepTrying)
             break;
     }
 
-    return isConnected;
+    return connected;
 }
 
 void Radio::checkConnection(bool printPrettyDetails)
 {
-    log("======= Checking connection for ESP32 > NRF24L01... =======", false);
+    logger.info("======= Checking connection for ESP32 > NRF24L01... =======");
 
     startReceiver();
 
     if (isCommunicationOk())
-        log("[SUCCESS] - Receiver NRF24 \x1B[32mconnected\x1B[0m to SPI!");
+        logger.info("Receiver NRF24 connected to SPI!");
     else
-        log("[FAIL] - NRF24 \x1B[31mNOT\x1B[0m connected to SPI.");
+        logger.error("NRF24 NOT connected to SPI.");
 
     if (printPrettyDetails)
         radio.printDetails();
 
-    log("======= Checking connection finished. =======", false);
+    logger.info("======= Checking connection finished. =======");
 }
 
 bool Radio::receiveData(char *buffer, uint8_t size)

@@ -1,18 +1,21 @@
+#ifdef ARDUINO
+
 #include <Arduino.h>
+#include "log.h"
 
-// put function declarations here:
-int myFunction(int, int);
-
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-}
+void setup() {}
 
 void loop() {
-  // put your main code here, to run repeatedly:
+    logger.testLogColors();
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+#else
+
+#include "log.h"
+
+int main() {
+    logger.testLogColors();
+    return 0;
 }
+
+#endif

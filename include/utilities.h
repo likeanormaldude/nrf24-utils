@@ -1,6 +1,2 @@
-#pragma once
-
-#include <Arduino.h>
-
-#include "log/log.h"
-#include "radio/radio.h"
+#include "log.h"
+#include "radio.h"
