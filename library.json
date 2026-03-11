@@ -1,0 +1,35 @@
+{
+    "name": "nrf24-utils",
+    "version": "1.0.0",
+    "description": "Utilities for NRF24 embedded projects",
+    "build": {
+        "includeDir": "include"
+    },
+    "keywords": [
+        "nrf24",
+        "rf24",
+        "esp32",
+        "embedded"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/likeanormaldude/nrf24-utils.git"
+    },
+    "authors": [
+        {
+            "name": "likeanormaldude"
+        }
+    ],
+    "frameworks": [
+        "arduino"
+    ],
+    "platforms": [
+        "espressif32",
+        "atmelavr"
+    ],
+    "dependencies": [
+        {
+            "name": "RF24"
+        }
+    ]
+}
