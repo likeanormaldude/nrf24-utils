@@ -3,5 +3,6 @@
 
 String getTimestamp();
 void log(const char* msg, bool logTimeStamp = true);
+void testLogColors();
 
 #endif
