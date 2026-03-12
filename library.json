@@ -1,6 +1,6 @@
 {
     "name": "nrf24-utils",
-    "version": "2.0.4",
+    "version": "2.0.6",
     "description": "Utilities for NRF24 embedded projects",
     "build": {
         "includeDir": "include"
@@ -23,10 +23,7 @@
     "frameworks": [
         "arduino"
     ],
-    "platforms": [
-        "espressif32",
-        "native"
-    ],
+    "platforms": "*",
     "dependencies": [
         {
             "name": "RF24"
