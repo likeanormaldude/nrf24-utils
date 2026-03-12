@@ -1,7 +1,7 @@
 {
     "name": "nrf24-utils",
-    "version": "2.1.1",
-    "description": "Utilities for NRF24 embedded projects",
+    "version": "2.1.4",
+    "description": "Utilities for NRF24",
     "build": {
         "includeDir": "include"
     },
