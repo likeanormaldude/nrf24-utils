@@ -70,6 +70,8 @@ Formatting is implemented using variadic templates to keep the logger lightweigh
 
 ---
 
+---
+
 # Project Structure
 
 ```
