@@ -1,6 +1,6 @@
 {
     "name": "nrf24-utils",
-    "version": "2.1.4",
+    "version": "2.1.8",
     "description": "Utilities for NRF24",
     "build": {
         "includeDir": "include"
