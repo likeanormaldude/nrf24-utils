@@ -28,6 +28,13 @@ void Log::print(const char* level, const char* color, const char* msg)
     hal_serial_println(msg);
 }
 
+void Log::printRaw(const char* msg)
+{
+    hal_serial_print(timestamp().c_str());
+    hal_serial_print(" ");
+    hal_serial_println(msg);
+}
+
 void Log::info(const char* msg)
 {
     print("INFO", BLUE, msg);
@@ -53,12 +60,16 @@ void Log::debug(const char* msg)
     print("DEBUG", MAGENTA, msg);
 }
 
-void Log::testLogColors(){
-    print("INFO", BLUE, "Booting system");
-    print("SUCCESS", GREEN, "NRF24 connected");
-    print("WARN", YELLOW, "Signal strength low");
-    print("ERROR", RED, "Packet lost");
-    print("DEBUG", MAGENTA, "Payload size: 32 bytes");
+void Log::testLogColors()
+{
+    info("Booting system");
+    success("NRF24 connected");
+    warn("Signal strength low");
+    error("Packet lost");
+    debug("Payload size: 32 bytes");
+
+    info("Colored %t %t", magenta("hello"), blue("world"));
+    printRaw("Raw colored %t %t", magenta("hello"), blue("world"));
 }
 
 std::string Log::timestamp()
@@ -74,6 +85,3 @@ std::string Log::timestamp()
 
     return std::string(buffer);
 }
-
-
-

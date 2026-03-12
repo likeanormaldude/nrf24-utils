@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 struct ColoredText
@@ -25,6 +26,11 @@ inline ColoredText red(const std::string& s)
 inline ColoredText green(const std::string& s)
 {
     return {"\x1B[32m", s};
+}
+
+inline ColoredText yellow(const std::string& s)
+{
+    return {"\x1B[33m", s};
 }
 
 inline std::string apply_color(const ColoredText& c)
