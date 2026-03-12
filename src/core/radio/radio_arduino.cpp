@@ -59,14 +59,14 @@ bool Radio::isCommunicationOk(bool keepTrying)
 
 void Radio::checkConnection(bool printPrettyDetails)
 {
-    logger.info("======= Checking connection for ESP32 > NRF24L01... =======");
+    logger.printRaw("======= Checking connection for ESP32 > NRF24L01... =======");
 
     startReceiver();
 
     if (isCommunicationOk())
-        logger.info("Receiver NRF24 connected to SPI!");
+        logger.success("Receiver NRF24 %t to SPI!", green("connected"));
     else
-        logger.error("NRF24 NOT connected to SPI.");
+        logger.error("NRF24 %t connected to SPI.", red("NOT"));
 
     if (printPrettyDetails)
         radio.printDetails();
