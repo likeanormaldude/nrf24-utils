@@ -173,8 +173,6 @@ Tests include:
 
 ---
 
----
-
 # Hardware Abstraction
 
 The logger depends on two small hardware abstraction layers.
